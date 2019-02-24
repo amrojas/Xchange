@@ -1,9 +1,11 @@
 # Xchange
-
 [Xchange Video Pitch](https://youtu.be/AgSmypWLm68 "Xchange Video Pitch")
 
 ## 2019 Johns Hopkins University Business Plan Competition
 - Computer Science Innovation and Entrepreneurship II
+
+## Members
+- Co-Founders: Andrew Rojas, Gabe Villasana, Reece Griffith, Ali Rachidi
 
 ## Tech Stack Diagram
 ![](images/diagram.png?raw=true)
