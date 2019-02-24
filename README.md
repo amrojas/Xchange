@@ -5,6 +5,9 @@
 ## 2019 Johns Hopkins University Business Plan Competition
 - Computer Science Innovation and Entrepreneurship II
 
+## Tech Stack Diagram
+![](images/diagram.png?raw=true)
+
 ## Math Model Factors for MVP
 - Weather
   - Did it rain/snow during the operating hours?
