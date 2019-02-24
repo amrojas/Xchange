@@ -1,5 +1,5 @@
 # Xchange
-<iframe width="560" height="315" src="https://www.youtube.com/embed/AgSmypWLm68" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![](http://img.youtube.com/vi/AgSmypWLm68/0.jpg)](http://www.youtube.com/watch?v=AgSmypWLm68 "Xchange Video Pitch")
 
 [External Link](https://youtu.be/AgSmypWLm68 "Xchange Video Pitch")
 
