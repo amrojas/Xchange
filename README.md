@@ -1,7 +1,5 @@
 # Xchange
-[![](http://img.youtube.com/vi/AgSmypWLm68/0.jpg)](http://www.youtube.com/watch?v=AgSmypWLm68 "Xchange Video Pitch")
-
-[External Link](https://youtu.be/AgSmypWLm68 "Xchange Video Pitch")
+[Video Pitch](https://youtu.be/AgSmypWLm68 "Xchange Video Pitch")
 
 ## 2019 Johns Hopkins University Business Plan Competition
 - Computer Science Innovation and Entrepreneurship II
