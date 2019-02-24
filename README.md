@@ -6,13 +6,13 @@
 > Computer Science Innovation and Entrepreneurship II
 
 ## Math Model Factors for MVP
-1. Weather
-  -- Did it rain/snow during the operating hours?
-  -- Also the average temperature for the given day (in 10 degree intervals).
-2. Day of the Week
-3. Season
-4. Is Delivery Offered?
-5. Number of Employees Working
-6. Discounts or Sale
-7. Price (If it changes or fluctuates)
-8. Holidays or Events
+- Weather
+  - Did it rain/snow during the operating hours?
+  - Also the average temperature for the given day (in 10 degree intervals).
+- Day of the Week
+- Season
+- Is Delivery Offered?
+- Number of Employees Working
+- Discounts or Sale
+- Price (If it changes or fluctuates)
+- Holidays or Events
