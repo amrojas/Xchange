@@ -1,1 +1,274 @@
-<!-- pending development -->
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        <title>Xchange- Home</title>
+        <link rel="stylesheet" href="base.css">
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
+  <body style="margin-top:-24px;">
+    <div class="navbar">
+      <ul>
+        <li><a href="#" class="header_title">XCHANGE <br> INVENTORY SOLUTIONS</a></li>
+        <li style="float:right" class="navbar-item"><a href="blog.html">BLOG</a></li>
+        <li style="float:right" class="navbar-item"><a href="resources.html">RESOURCES</a></li>
+        <li style="float:right" class="navbar-item"><a href="about.html">ABOUT</a>
+          <li style="float:right" class="navbar-item"><a href="index.html">HOME</a></li>
+      </ul>
+    </div>
+      
+    <div class="slideshow-container" style="margin-top:-16px;">
+
+    <div class="mySlides fade">
+      <img src="pictures/im2.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+      <img src="pictures/im3.jpg" style="width:100%">
+    </div>
+
+    </div>
+
+    <div style="text-align:center">
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+    </div>
+
+    <script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}    
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+      setTimeout(showSlides, 4000); // Change image every 2 seconds
+    }
+    </script>
+
+        <div id="content" style="margin-top:-75px;">
+            
+            <h1 style="color:black; font-size: 200%; padding-top:7%;">Join us, <br> at Xchange.</h1>
+
+            <br>
+            <a href="dash.html"><button class="button button2">Login</button></a>
+            <br>
+            <br>
+            
+            <h2>Features</h2>
+            <section class="thumbnails">
+            
+                    <div>
+                        
+                        <a style="color:black" href="#">
+                        <img src="images/watchmenPaperback.jpg" alt=""/>
+                        <h3>Predictive Analytics</h3>
+                        <i class="fa fa-line-chart" style="font-size:100px" aria-hidden="true"></i>
+                        <span style="color:rgba(255, 255, 255, .6); padding:0">
+                        </span>
+                        </a>
+            
+                    </div>
+        
+                    <div>
+                        
+                        <a style="color:black" href="#">
+                        <img src="images/watchmenPaperback.jpg" alt=""/>
+                        <h3>Seamless Integration</h3>
+                        <i class="fa fa-cogs" style="font-size:100px" aria-hidden="true"></i>
+                        <span style="color:rgba(255, 255, 255, .6); padding:0">
+                        </span>
+                        </a>
+            
+                    </div>
+        
+                    <div>
+    
+                        <a style="color:black" href="#">
+                        <img src="images/watchmenPaperback.jpg" alt=""/>
+                        <h3>Intuitive UX</h3>
+                        <i class="fa fa-universal-access" style="font-size:100px" aria-hidden="true"></i>
+                        <span style="color:rgba(255, 255, 255, .6); padding:0">
+                        </span>
+                        </a>
+    
+                    </div>
+        
+        
+                    <script>
+                    function show(elementID) {
+                    var ele = document.getElementById(elementID);
+                    if (!ele) {
+                    alert("no such element");
+                    return;
+                    }
+                    var pages = document.getElementsByClassName('page');
+                    for(var i = 0; i < pages.length; i++) {
+                    pages[i].style.display = 'none';
+                    }
+                    ele.style.display = 'block';
+                    }
+                    </script>
+        
+        
+                    </section>
+            <br>
+            <br>
+            <br>
+
+            <h2>Partners</h2>
+            <section class="thumbnails">
+            
+                    <div>
+                        
+                        <a style="color:black" href="#">
+                        <h3>Brody Cafe at Johns Hopkins</h3>
+                        <img src="images/watchmenPaperback.jpg" alt=""/>
+                        <span style="color:rgba(255, 255, 255, .6); padding:0">
+                        </span>
+                        </a>
+
+            
+                    </div>
+        
+        
+                    <div>
+    
+                            <a style="color:black" href="#">
+                                    <h3>One World Cafe</h3>
+                                    <img src="images/watchmenPaperback.jpg" alt=""/>
+                                    <span style="color:rgba(255, 255, 255, .6); padding:0">
+                                    </span>
+                                    </a>
+    
+                    </div>
+        
+        
+                    <script>
+                    function show(elementID) {
+                    var ele = document.getElementById(elementID);
+                    if (!ele) {
+                    alert("no such element");
+                    return;
+                    }
+                    var pages = document.getElementsByClassName('page');
+                    for(var i = 0; i < pages.length; i++) {
+                    pages[i].style.display = 'none';
+                    }
+                    ele.style.display = 'block';
+                    }
+                    </script>
+        
+        
+                    </section>
+
+            <br>
+            <br>
+            <br>
+
+            <h2>Supported POS Systems</h2>
+            <section class="thumbnails">
+            
+                    <div>
+                        
+                            <a style="color:black" href="#">
+                                    <h3>Square</h3>
+                                    <img style="height:300px; width:300px" src="pictures/square.01.jpg" alt=""/>
+                                    <span style="color:rgba(255, 255, 255, .6); padding:0">
+                                    </span>
+                                </a>
+                    
+                                <a style="color:black" href="#">
+                                        <h3>ePOSnow</h3>
+                                        <img style="height:300px; width:300px" src="pictures/e.png" alt=""/>
+                                        <span style="color:rgba(255, 255, 255, .6); padding:0">
+                                        </span>
+                                        </a>
+            
+                    </div>
+        
+                    <div>
+                        
+                            <a style="color:black" href="#">
+                                    <h3>Toast</h3>
+                                    <align-center>
+                                    <img style="height:300px; width:300px;" src="pictures/ts.png" alt=""/>
+                                </align-center>
+                                    <span style="color:rgba(255, 255, 255, .6); padding:0">
+                                    </span>
+                                    </a>
+                            
+                            <a style="color:black" href="#">
+                                    <h3>Vend</h3>
+                                    <img style="height:300px; width:300px" src="pictures/vend.png" alt=""/>
+                                    <span style="color:rgba(255, 255, 255, .6); padding:0">
+                                    </span>
+                                    </a>
+            
+                    </div>
+        
+                    <div>
+    
+                            <a style="color:black" href="#">
+                                    <h3>Lightspeed</h3>
+                                    <img style="height:300px; width:300px" src="pictures/ls.png" alt=""/>
+                                    <span style="color:rgba(255, 255, 255, .6); padding:0">
+                                    </span>
+                                    </a>
+    
+                    </div>
+        
+        
+                    <script>
+                    function show(elementID) {
+                    var ele = document.getElementById(elementID);
+                    if (!ele) {
+                    alert("no such element");
+                    return;
+                    }
+                    var pages = document.getElementsByClassName('page');
+                    for(var i = 0; i < pages.length; i++) {
+                    pages[i].style.display = 'none';
+                    }
+                    ele.style.display = 'block';
+                    }
+                    </script>
+        
+        
+                    </section>
+        </div>
+      
+        <div id="social">
+            <a href="https://www.facebook.com"><i class="fa fa-facebook-f" style="font-size:24px; color:#1B2631"></i></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://github.com"><i class="fa fa-github" style="font-size:24px; color:#1B2631"></i></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="mailto:reecegriffith98@gmail.com"><i class="fa fa-envelope-o" style="font-size:24px; color:#1B2631"></i></a>
+        </div>
+            
+        
+        <footer>
+            <p>Xchange | Founded 2018</p>
+        </footer>
+
+    </body>
+    
+</html>
