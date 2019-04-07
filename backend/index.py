@@ -4,9 +4,14 @@ import squareconnect
 app = Flask(__name__)
 
 
+@app.route("/create-order")
+def create_order():
+    return "this is an order for the modal"
+
+
 @app.route("/")
 def hello():
-    return "change this up"
+    return "noice"
 
 
 if __name__ == "__main__":
