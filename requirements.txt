@@ -1,3 +1,4 @@
 flask
 pymongo
+dnspython
 git+git://github.com/square/connect-python-sdk@master#egg=squareconnect
