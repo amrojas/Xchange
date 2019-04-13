@@ -1,4 +1,8 @@
 flask
 pymongo
 dnspython
+pandas
+numpy
+seaborn
+tensorflow
 git+git://github.com/square/connect-python-sdk@master#egg=squareconnect
