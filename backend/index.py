@@ -1,10 +1,12 @@
 from flask import Flask
-import json
+import json, weather
 app = Flask(__name__)
 
 
 @app.route("/create-order")
 def create_order():
+    # actually grab the predictions from the model
+
     fake_data = {
         'sales': {
             'burger': 15,
