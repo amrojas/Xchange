@@ -1,12 +1,24 @@
 from flask import Flask
-import pymongo
-import squareconnect
+import json
 app = Flask(__name__)
 
 
 @app.route("/create-order")
 def create_order():
-    return "this is an order for the modal"
+    fake_data = {
+        'sales': {
+            'burger': 15,
+            'fries': 25,
+            'shakes': 10
+        },
+        'ingredients': {
+            'ground beef': '25 lbs',
+            'potatoes': '15 lbs',
+            'lettuce': '2 heads',
+            'buns': '15 buns'
+        }
+    }
+    return json.dumps(fake_data)
 
 
 @app.route("/")
