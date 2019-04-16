@@ -2,7 +2,7 @@
   "dashboard": {
     "completedTasks": "Profit ($10k)",
     "dailySales": "Daily Sales",
-    "performance": "Inventory Costs",
+    "performance": "Inventory",
     "simpleTable": "Simple Table",
     "totalShipments": "Total Orders",
     "chartCategories": [

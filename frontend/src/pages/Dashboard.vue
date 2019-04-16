@@ -48,12 +48,12 @@
       <div class="col-12">
         <card type="chart">
           <template slot="header">
-            <div class="row">
-            <div class="col-sm-6" :class="isRTL ? 'text-right' : 'text-left'">
+            <tr class="row">
+              <div class="col-sm-6" :class="isRTL ? 'text-right' : 'text-left'">
                 <h2>Create an Order</h2>
-            </div>
-              <br>
-              <form action="http://0.0.0.0:5000/create-order">
+              </div>
+            </tr>
+            <tr class="row">
               <p>from:</p>
               &nbsp;&nbsp;
               <select name="from_month">
@@ -69,9 +69,9 @@
                 <option value="10">10</option>
                 <option value="11">11</option>
                 <option value="12">12</option>
-        </select>
-        &nbsp;&nbsp;
-        <select name="from_day">
+              </select>
+              &nbsp;&nbsp;
+              <select name="from_day">
                 <option value="01">01</option>
                 <option value="02">02</option>
                 <option value="03">03</option>
@@ -103,15 +103,15 @@
                 <option value="29">29</option>
                 <option value="30">30</option>
                 <option value="31">31</option>
-        </select>
-        &nbsp;&nbsp;
-        <select name="from_year">
+              </select>
+              &nbsp;&nbsp;
+              <select name="from_year">
                 <option value="2019">2019</option>
                 <option value="2020">2020</option>
                 <option value="2021">2021</option>
-        </select>
-              <br><br>
-
+              </select>
+            </tr>
+            <tr class="row">
               <p>to:</p>
               &nbsp;&nbsp;
               <select name="to_month">
@@ -127,9 +127,9 @@
                 <option value="10">10</option>
                 <option value="11">11</option>
                 <option value="12">12</option>
-        </select>
-         &nbsp;&nbsp;
-        <select name="to_day">
+              </select>
+              &nbsp;&nbsp;
+              <select name="to_day">
                 <option value="01">01</option>
                 <option value="02">02</option>
                 <option value="03">03</option>
@@ -161,27 +161,64 @@
                 <option value="29">29</option>
                 <option value="30">30</option>
                 <option value="31">31</option>
-        </select>
-         &nbsp;&nbsp;
-        <select name="to_year">
+              </select>
+              <select name="to_year">
                 <option value="2019">2019</option>
                 <option value="2020">2020</option>
                 <option value="2021">2021</option>
-        </select>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            
-            <input style="height:30px; width:100px; float:right; background-color:#FF00FF; border-radius:8px; border-color:#BA55D3; border-width:1px; color:#FFFFFF; font-weight:600;" type="submit" value="Submit">
-            <br>
-            <br>
+              </select>
+            </tr>
 
-            </form>
-            
+            <input @click="showModal = !showModal" style="height:30px; width:100px; float:right; background-color:#FF00FF; border-radius:8px; border-color:#BA55D3; border-width:1px; color:#FFFFFF; font-weight:600;" type="submit" value="Submit">
+            <br>
+            <br>
+            <div id="app">
+              <!-- use the modal component, pass in the prop -->
+              <modal v-if="showModal" @close="showModal = false">
+                <br>
+                <br>
+                <h3 slot="header">Your Order:</h3>
+                <user-table></user-table>
+              </modal>
             </div>
+
+            <!-- app -->
+
+<br>
+<br>
+<!-- template for the modal component -->
+<script type="text/x-template" id="modal-template">
+  <transition name="modal">
+    <div class="modal-mask">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+
+          <div class="modal-header">
+            <slot name="header">
+              default header
+            </slot>
+          </div>
+
+          <div class="modal-body">
+            <slot name="body">
+              default body
+            </slot>
+          </div>
+
+          <div class="modal-footer">
+            <slot name="footer">
+              default footer
+              <button class="modal-default-button" @click="$emit('close')">
+                OK
+              </button>
+            </slot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</script>
+            </tr>
           </template>
         </card>
       </div>
@@ -272,6 +309,20 @@
   </div>
 </template>
 <script>
+// register modal component
+Vue.component('modal', {
+  template: '#modal-template'
+})
+
+// start app
+new Vue({
+  el: '#app',
+  data: {
+    showModal: false
+  }
+})
+</script>
+<script>
   import LineChart from '@/components/Charts/LineChart';
   import BarChart from '@/components/Charts/BarChart';
   import * as chartConfigs from '@/components/Charts/config';
@@ -288,6 +339,7 @@
     },
     data() {
       return {
+        showModal: false,
         bigLineChart: {
           allData: [
             [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100],
@@ -402,7 +454,10 @@
         this.$refs.bigChart.updateGradients(chartData);
         this.bigLineChart.chartData = chartData;
         this.bigLineChart.activeIndex = index;
-      }
+      },
+      makeApiCall() {
+        console.log(wow)
+      },
     },
     mounted() {
       this.i18n = this.$i18n;
@@ -422,5 +477,21 @@
 </script>
 
 <style>
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: table;
+  transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
 </style>
 

@@ -5,5 +5,5 @@ pandas
 numpy
 seaborn
 tensorflow
-weather-api
+pyowm
 git+git://github.com/square/connect-python-sdk@master#egg=squareconnect
