@@ -48,12 +48,12 @@
       <div class="col-12">
         <card type="chart">
           <template slot="header">
-            <div class="row">
-            <div class="col-sm-6" :class="isRTL ? 'text-right' : 'text-left'">
+            <tr class="row">
+              <div class="col-sm-6" :class="isRTL ? 'text-right' : 'text-left'">
                 <h2>Create an Order</h2>
-            </div>
-              <br>
-              <form action="http://0.0.0.0:5000/create-order">
+              </div>
+            </tr>
+            <tr class="row">
               <p>from:</p>
               &nbsp;&nbsp;
               <select name="from_month">
@@ -69,9 +69,9 @@
                 <option value="10">10</option>
                 <option value="11">11</option>
                 <option value="12">12</option>
-        </select>
-        &nbsp;&nbsp;
-        <select name="from_day">
+              </select>
+              &nbsp;&nbsp;
+              <select name="from_day">
                 <option value="01">01</option>
                 <option value="02">02</option>
                 <option value="03">03</option>
@@ -103,15 +103,15 @@
                 <option value="29">29</option>
                 <option value="30">30</option>
                 <option value="31">31</option>
-        </select>
-        &nbsp;&nbsp;
-        <select name="from_year">
+              </select>
+              &nbsp;&nbsp;
+              <select name="from_year">
                 <option value="2019">2019</option>
                 <option value="2020">2020</option>
                 <option value="2021">2021</option>
-        </select>
-              <br><br>
-
+              </select>
+            </tr>
+            <tr class="row">
               <p>to:</p>
               &nbsp;&nbsp;
               <select name="to_month">
@@ -127,9 +127,9 @@
                 <option value="10">10</option>
                 <option value="11">11</option>
                 <option value="12">12</option>
-        </select>
-         &nbsp;&nbsp;
-        <select name="to_day">
+              </select>
+              &nbsp;&nbsp;
+              <select name="to_day">
                 <option value="01">01</option>
                 <option value="02">02</option>
                 <option value="03">03</option>
@@ -161,39 +161,31 @@
                 <option value="29">29</option>
                 <option value="30">30</option>
                 <option value="31">31</option>
-        </select>
-         &nbsp;&nbsp;
-        <select name="to_year">
+              </select>
+              <select name="to_year">
                 <option value="2019">2019</option>
                 <option value="2020">2020</option>
                 <option value="2021">2021</option>
-        </select>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            
-            <input @click="showModal = true" style="height:30px; width:100px; float:right; background-color:#FF00FF; border-radius:8px; border-color:#BA55D3; border-width:1px; color:#FFFFFF; font-weight:600;" type="submit" value="Submit">
+              </select>
+            </tr>
+
+            <input @click="showModal = !showModal" style="height:30px; width:100px; float:right; background-color:#FF00FF; border-radius:8px; border-color:#BA55D3; border-width:1px; color:#FFFFFF; font-weight:600;" type="submit" value="Submit">
             <br>
             <br>
             <div id="app">
-  <!-- use the modal component, pass in the prop -->
-  <modal v-if="showModal" @close="showModal = false">
-    <br>
-    <br>
-    <h3 slot="header">Your Order:</h3>
-    <p>1 chicken xxx</p>
-  </modal>
-</div>
+              <!-- use the modal component, pass in the prop -->
+              <modal v-if="showModal" @close="showModal = false">
+                <br>
+                <br>
+                <h3 slot="header">Your Order:</h3>
+                <user-table></user-table>
+              </modal>
+            </div>
 
-            </form>
             <!-- app -->
 
 <br>
 <br>
-            
 <!-- template for the modal component -->
 <script type="text/x-template" id="modal-template">
   <transition name="modal">
@@ -226,7 +218,7 @@
     </div>
   </transition>
 </script>
-            </div>
+            </tr>
           </template>
         </card>
       </div>
@@ -462,7 +454,10 @@ new Vue({
         this.$refs.bigChart.updateGradients(chartData);
         this.bigLineChart.chartData = chartData;
         this.bigLineChart.activeIndex = index;
-      }
+      },
+      makeApiCall() {
+        console.log(wow)
+      },
     },
     mounted() {
       this.i18n = this.$i18n;
