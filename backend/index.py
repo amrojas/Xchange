@@ -1,11 +1,31 @@
-from flask import Flask
-import json, weather
+from flask import Flask, request
+from datetime import date, datetime
+import pyowm
+import json
 app = Flask(__name__)
 
 
 @app.route("/create-order")
 def create_order():
-    # actually grab the predictions from the model
+    owm_key = '89e686ad98777cffe46b97744199eab0'
+
+    data = json.loads(request.data)
+    start_date, end_date = data['start_date'], data['end_date']
+
+    format_string = '%m %d %Y'
+
+    start_date = datetime.strptime(start_date, format_string).date()
+    end_date = datetime.strptime(end_date, format_string).date()
+
+
+
+    while start_date != end_date:
+        average_temp = 70
+        day_of_week = start_date.weekday()
+
+        pass
+
+    pass
 
     fake_data = {
         'sales': {
