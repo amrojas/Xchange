@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, Response
 from datetime import date, datetime
 import pyowm
 import json
@@ -9,28 +9,10 @@ app = Flask(__name__)
 def create_order():
     owm_key = '89e686ad98777cffe46b97744199eab0'
 
-    data = json.loads(request.data)
-    start_date, end_date = data['start_date'], data['end_date']
-
-    format_string = '%m %d %Y'
-
-    start_date = datetime.strptime(start_date, format_string).date()
-    end_date = datetime.strptime(end_date, format_string).date()
-
-
-
-    while start_date != end_date:
-        average_temp = 70
-        day_of_week = start_date.weekday()
-
-        pass
-
-    pass
-
     fake_data = {
         'sales': {
             'burger': 15,
-            'fries': 25,
+            'friesssssss': 25,
             'shakes': 10
         },
         'ingredients': {
@@ -40,8 +22,9 @@ def create_order():
             'buns': '15 buns'
         }
     }
-    return json.dumps(fake_data)
-
+    response = Response(json.dumps(fake_data))
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
 
 @app.route("/")
 def hello():
