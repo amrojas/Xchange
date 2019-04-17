@@ -62,9 +62,7 @@ def get_quantity(day_of_week, week_number, temp, weather):
     normalized_data = norm(df)
     nd_array = model.predict(normalized_data)
     quantities = {}
-    for i in len(menu):
-        quantities[menu[i]] = nd_array[i]
-    return quantities
 
-quantities = get_quantity(2, 3, 42, "Sun")
-print(quantities)
+    for i in range(len(menu)):
+        quantities[menu[i]] = int(nd_array[i][0])
+    return quantities
