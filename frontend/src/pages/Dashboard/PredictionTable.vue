@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="table-full-width">
-    <table>
+    <div>
+    <table width="100%">
       <tr>
           <th>
             <h3>Start Date:</h3>
           </th>
-          <th style="padding-right: 100px">
+          <th>
             <date-picker :inline="true"
                          :bootstrap-styling="true"
                          v-model="start_date"
@@ -16,7 +16,7 @@
           <th>
             <h3>End Date:</h3>
           </th>
-          <th style="padding-right: 150px">
+          <th>
             <date-picker :inline="true"
                          :bootstrap-styling="true"
                          v-model="end_date"
@@ -24,7 +24,7 @@
             </date-picker>
           </th>
           <th>
-            <input v-on:click="compute" style="height:30px; width:100px; float:right; background-color:#FF00FF; border-radius:8px; border-color:#BA55D3; border-width:1px; color:#FFFFFF; font-weight:600;" type="submit" value="Submit">
+            <input v-on:click="compute" style="width:75px; float:right; background-color:#FF00FF; border-radius:8px; border-color:#BA55D3; border-width:1px; color:#FFFFFF; font-weight:600;" type="submit" value="Submit">
           </th>
       </tr>
     </table>
