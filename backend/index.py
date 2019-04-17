@@ -19,7 +19,8 @@ def create_order():
             'ground beef': '25 lbs',
             'potatoes': '15 lbs',
             'lettuce': '2 heads',
-            'buns': '15 buns'
+            'buns': '15 buns',
+            'tomatoes': '4 tomatoes'
         }
     }
     response = Response(json.dumps(fake_data))

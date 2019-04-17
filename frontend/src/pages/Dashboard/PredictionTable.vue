@@ -31,22 +31,26 @@
     </div>
     <br>
     <br>
-    <table width="100%">
+    <table width="100%" v-if="showTable">
+      <tr>
+        <th>
+          <h3>Predicted Sales:</h3>
+        </th>
+        <th>
+          <h3>Inventory Needs:</h3>
+        </th>
+      </tr>
       <tr>
         <th width="50%">
           <base-table :columns="sales_colunmns"
-                      :data="items"
-                      thead-classes="text-primary"
-                      v-if="showTable"
-                      @close="showTable = false">
+                      :data="sales"
+                      thead-classes="text-primary">
           </base-table>
         </th>
         <th width="50%">
           <base-table :columns="inventory_columns"
-                      :data="items"
-                      thead-classes="text-primary"
-                      v-if="showTable"
-                      @close="showTable = false">
+                      :data="ingredients"
+                      thead-classes="text-primary">
           </base-table>
         </th>
       </tr>
@@ -67,17 +71,18 @@
     data() {
       return {
         showTable: false,
-        items: [],
+        sales: [],
+        ingredients: [],
         start_date : new Date(),
         end_date: new Date(),
       }
     },
     computed: {
       sales_colunmns(){
-        return ["Ingredient", "Quantity"]
+        return ["Item", "Quantity"]
       },
       inventory_columns(){
-        return ["Item", "Quantity"]
+        return ["Ingredient", "Quantity"]
       }
     },
     methods: {
@@ -92,18 +97,28 @@
               }
             })
             .then(response => {
-              this.items = Object.entries(response.data['sales']);
-              let correct = [];
-              for (let x of this.items) {
-                correct.push({
+              let data = response.data;
+              let sales = Object.entries(data.sales);
+              let ingredients = Object.entries(data.ingredients);
+              for (let x of sales) {
+                this.sales.push({
                   item: x[0],
                   quantity: x[1]
                 });
               }
-              this.items = correct;
+              for (let y of ingredients) {
+                this.ingredients.push({
+                  ingredient: y[0],
+                  quantity: y[1]
+                })
+              }
+              this.showTable = value;
             });
+        } else {
+          this.ingredients = [];
+          this.sales = [];
+          this.showTable = value;
         }
-        this.showTable = value;
       }
 
     }
