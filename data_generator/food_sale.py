@@ -1,9 +1,9 @@
 class food_sale:
 
     def __init__(self):
-        self.item_id = 0 #Represents food item
-        self.week_number = 0 #Based on Calendar week
-        self.weather_condition = 0 # 0 = Sun, 1 = Rain, 2 = Snow
+        self.item_id = 0 # Represents food item
+        self.week_number = 0 # Based on Calendar week
+        self.weather_condition = 0 # Sun, Rain, Snow
         self.average_temperature = 0 # In Farenheit
         self.day_of_week = 0 # 1 = Monday, 7 = Sunday
 
