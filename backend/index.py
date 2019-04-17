@@ -40,7 +40,7 @@ def create_order():
             else:
                 ingredient_totals[key] += value
 
-        current_day + timedelta(1)
+        current_day += timedelta(1)
 
     data = {
         'sales': item_totals,
