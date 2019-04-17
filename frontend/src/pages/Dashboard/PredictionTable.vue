@@ -92,8 +92,8 @@
           axios
             .get('http://0.0.0.0:5000/create-order', {
               params: {
-                start_date: String(this.start_date.getFullYear()) + ' ' + String(this.start_date.getMonth()) + ' ' + String(this.start_date.getDate()),
-                end_date: String(this.end_date.getFullYear()) + ' ' + String(this.end_date.getMonth()) + ' ' + String(this.end_date.getDate())
+                start_date: String(this.start_date.getFullYear()) + ' ' + String(this.start_date.getMonth() + 1) + ' ' + String(this.start_date.getDate()),
+                end_date: String(this.end_date.getFullYear()) + ' ' + String(this.end_date.getMonth() + 1) + ' ' + String(this.end_date.getDate())
               }
             })
             .then(response => {
