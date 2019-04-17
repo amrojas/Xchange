@@ -2,49 +2,7 @@
 
   <div>
 
-    <div class="row">
-      <div class="col-12">
-        <card type="chart">
-          <template slot="header">
-            <div class="row">
-              <div class="col-sm-6" :class="isRTL ? 'text-right' : 'text-left'">
-                <h5 class="card-category">{{$t('dashboard.totalShipments')}}</h5>
-                <h2 class="card-title">{{$t('dashboard.performance')}}</h2>
-              </div>
-              <div class="col-sm-6">
-                <div class="btn-group btn-group-toggle"
-                     :class="isRTL ? 'float-left' : 'float-right'"
-                     data-toggle="buttons">
-                  <label v-for="(option, index) in bigLineChartCategories"
-                         :key="option"
-                         class="btn btn-sm btn-primary btn-simple"
-                         :class="{active: bigLineChart.activeIndex === index}"
-                         :id="index">
-                    <input type="radio"
-                           @click="initBigChart(index)"
-                           name="options" autocomplete="off"
-                           :checked="bigLineChart.activeIndex === index">
-                    {{option}}
-                  </label>
-                </div>
-              </div>
-            </div>
-          </template>
-          <div class="chart-area">
-            <line-chart style="height: 100%"
-                        ref="bigChart"
-                        chart-id="big-line-chart"
-                        :chart-data="bigLineChart.chartData"
-                        :gradient-colors="bigLineChart.gradientColors"
-                        :gradient-stops="bigLineChart.gradientStops"
-                        :extra-options="bigLineChart.extraOptions">
-            </line-chart>
-          </div>
-        </card>
-      </div>
-    </div>
-
-    <div class="row">
+      <div class="row">
       <div class="col-12">
         <card type="chart">
           <template slot="header">
@@ -96,6 +54,48 @@
 </script>
             </tr>
           </template>
+        </card>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <card type="chart">
+          <template slot="header">
+            <div class="row">
+              <div class="col-sm-6" :class="isRTL ? 'text-right' : 'text-left'">
+                <h5 class="card-category">{{$t('dashboard.totalShipments')}}</h5>
+                <h2 class="card-title">{{$t('dashboard.performance')}}</h2>
+              </div>
+              <div class="col-sm-6">
+                <div class="btn-group btn-group-toggle"
+                     :class="isRTL ? 'float-left' : 'float-right'"
+                     data-toggle="buttons">
+                  <label v-for="(option, index) in bigLineChartCategories"
+                         :key="option"
+                         class="btn btn-sm btn-primary btn-simple"
+                         :class="{active: bigLineChart.activeIndex === index}"
+                         :id="index">
+                    <input type="radio"
+                           @click="initBigChart(index)"
+                           name="options" autocomplete="off"
+                           :checked="bigLineChart.activeIndex === index">
+                    {{option}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </template>
+          <div class="chart-area">
+            <line-chart style="height: 100%"
+                        ref="bigChart"
+                        chart-id="big-line-chart"
+                        :chart-data="bigLineChart.chartData"
+                        :gradient-colors="bigLineChart.gradientColors"
+                        :gradient-stops="bigLineChart.gradientStops"
+                        :extra-options="bigLineChart.extraOptions">
+            </line-chart>
+          </div>
         </card>
       </div>
     </div>
