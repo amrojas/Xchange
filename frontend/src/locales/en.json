@@ -21,9 +21,7 @@
       "title": "Inventory Pricepoints",
       "columns": [
         "Product Name",
-        "Supplier",
-        "SKU",
-        "Price"
+        "Quantity"
       ],
       "data": [
         {
