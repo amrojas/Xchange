@@ -1,4 +1,4 @@
-from flask import Flask, Response
+from flask import Flask, Response, request
 from datetime import date, datetime
 import pyowm
 import json
@@ -8,6 +8,8 @@ app = Flask(__name__)
 @app.route("/create-order")
 def create_order():
     owm_key = '89e686ad98777cffe46b97744199eab0'
+
+    print(request.data)
 
     fake_data = {
         'sales': {
