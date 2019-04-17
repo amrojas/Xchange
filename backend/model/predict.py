@@ -1,16 +1,10 @@
 from __future__ import absolute_import, division, print_function
 from pymongo import MongoClient
-from pprint import pprint
 from buildDataFrame import build_new_data
 import pandas as pd
 
-import os.path
-
-import pathlib
 import tensorflow as tf
 from tensorflow import keras
-from tensorflow.keras import layers
-from keras.models import model_from_json
 
 def initialize_model():
     # load json and create model
