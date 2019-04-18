@@ -1,6 +1,5 @@
 from __future__ import absolute_import, division, print_function
 from pymongo import MongoClient
-from buildDataFrame import build_new_data
 import pandas as pd
 
 import tensorflow as tf
@@ -61,5 +60,17 @@ def get_quantity(day_of_week, week_number, temp, weather):
         quantities[menu[i]] = int(nd_array[i][0])
     return quantities
 
+def build_new_data(menu, average_temp, days_of_week, week_numbers , weather):
 
-print(get_quantity(5, 26, 78, "Sun"))
+    menu_size = len(menu)
+    new_data = {}
+    new_data["Average Temperature"] = [average_temp] *  menu_size
+    new_data["Day of Week"] = [days_of_week] * menu_size
+    new_data["Week Number"] = [week_numbers] * menu_size
+    new_data["Sun"] = [1 if weather == "Sun" else 0] * menu_size
+    new_data["Rain"] = [1 if weather == "Rain" else 0] * menu_size
+    new_data["Snow"] = [1 if weather == "Snow" else 0] * menu_size
+    for food in menu:
+        new_data[food] = [1 if item == food else 0 for item in menu]
+
+    return pd.DataFrame.from_dict(new_data)

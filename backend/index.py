@@ -2,12 +2,8 @@ from flask import Flask, Response, request
 from datetime import datetime, timedelta
 import pyowm
 import json
+from model import predict
 app = Flask(__name__)
-
-
-def fn(day_of_week, week_number, temp, weather):
-    return {}
-
 
 @app.route("/create-order")
 def create_order():
@@ -24,15 +20,15 @@ def create_order():
         week_number = current_day.isocalendar()[1]
         day_of_week = current_day.isoweekday()
 
-        day_total_sales = fn(day_of_week, week_number, weather_temperature, weather_condition)
+        day_total_sales = predict.get_quantity(day_of_week, week_number, weather_temperature, weather_condition)
         # get ingredient totals for the day
         day_total_ingredients = {}
 
         for key, value in day_total_sales.items():
             if key in item_totals:
-                item_totals[key] = value
-            else:
                 item_totals[key] += value
+            else:
+                item_totals[key] = value
 
         for key, value in day_total_ingredients.items():
             if key in ingredient_totals:
@@ -47,21 +43,7 @@ def create_order():
         'ingredients': ingredient_totals
     }
 
-    fake_data = {
-        'sales': {
-            'burger': 15,
-            'friesssssss': 25,
-            'shakes': 10
-        },
-        'ingredients': {
-            'ground beef': '25 lbs',
-            'potatoes': '15 lbs',
-            'lettuce': '2 heads',
-            'buns': '15 buns',
-            'tomatoes': '4 tomatoes'
-        }
-    }
-    response = Response(json.dumps(fake_data))
+    response = Response(json.dumps(data))
     response.headers['Access-Control-Allow-Origin'] = '*'
     return response
 

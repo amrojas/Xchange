@@ -10,6 +10,8 @@
             <date-picker :inline="true"
                          :bootstrap-styling="true"
                          v-model="start_date"
+                         :disabled-dates="start_disabled_dates"
+                         :highlighted="highlighted"
                          class="testingthis">
             </date-picker>
           </th>
@@ -20,6 +22,8 @@
             <date-picker :inline="true"
                          :bootstrap-styling="true"
                          v-model="end_date"
+                         :disabled-dates="end_disabled_dates"
+                         :highlighted="highlighted"
                          class="testingthis">
             </date-picker>
           </th>
@@ -31,6 +35,9 @@
     </div>
     <br>
     <br>
+    <div style="width: 100%; text-align: center" >
+      <h3 v-if="loading" style="text-align: center">Neural Net Analyzing Your Customer's Needs</h3>
+    </div>
     <table width="100%" v-if="showTable">
       <tr>
         <th>
@@ -71,10 +78,17 @@
     data() {
       return {
         showTable: false,
+        loading: false,
         sales: [],
         ingredients: [],
         start_date : new Date(),
         end_date: new Date(),
+        start_disabled_dates: {
+          to: new Date()
+        },
+        highlighted: {
+          includeDisabled: true
+        }
       }
     },
     computed: {
@@ -83,12 +97,18 @@
       },
       inventory_columns(){
         return ["Ingredient", "Quantity"]
+      },
+      end_disabled_dates() {
+        return {
+          to: this.start_date
+        }
       }
     },
     methods: {
       compute: function () {
         let value = !this.showTable;
         if (value) {
+          this.loading = true;
           axios
             .get('http://0.0.0.0:5000/create-order', {
               params: {
@@ -112,6 +132,7 @@
                   quantity: y[1]
                 })
               }
+              this.loading = false;
               this.showTable = value;
             });
         } else {
@@ -127,6 +148,10 @@
 <style>
   .testingthis > div > div {
     background-color: #14B570;
+  }
+
+  .testingthis > .vdp-datepicker__calendar > div > .disabled {
+    background-color: lightgrey;
   }
 
   th {
