@@ -20,18 +20,5 @@ def build_new_data(menu, average_temp, days_of_week, week_numbers , weather):
     new_data["Snow"] = [1 if weather == "Snow" else 0] * menu_size
     for food in menu:
         new_data[food] = [1 if item == food else 0 for item in menu]
-    '''
-    new_data["Cheese Burger"] = [1 if item == "Cheese Burger" else 0 for item in menu]
-    new_data["Chicken Caesar Salad"] = [1 if item == "Chicken Caesar Salad" else 0 for item in menu]
-    new_data["Chicken Sandwich"] = [1 if item == "Chicken Sandwich" else 0 for item in menu]
-    new_data["Burger"] = [1 if item == "Burger" else 0 for item in menu]
-    new_data["Vanilla Shake"] = [1 if item == "Vanilla Shake" else 0 for item in menu]
-    new_data["Fries"] = [1 if item == "Fries" else 0 for item in menu]
-    new_data["Lemonade"] = [1 if item == "Lemonade" else 0 for item in menu]
-    new_data["Coffee"] = [1 if item == "Coffee" else 0 for item in menu]
-    new_data["Ice Cream Sundae"] = [1 if item == "Ice Cream Sundae" else 0 for item in menu]
-    '''
-
-    print(new_data)
 
     return pd.DataFrame.from_dict(new_data)

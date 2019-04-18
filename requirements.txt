@@ -3,7 +3,6 @@ pymongo
 dnspython
 pandas
 numpy
-seaborn
 tensorflow
 pyowm
 git+git://github.com/square/connect-python-sdk@master#egg=squareconnect

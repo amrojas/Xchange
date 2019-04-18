@@ -60,3 +60,6 @@ def get_quantity(day_of_week, week_number, temp, weather):
     for i in range(len(menu)):
         quantities[menu[i]] = int(nd_array[i][0])
     return quantities
+
+
+print(get_quantity(5, 26, 78, "Sun"))
