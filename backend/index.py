@@ -1,9 +1,10 @@
 from flask import Flask, Response, request
 from datetime import datetime, timedelta
-import pyowm
+from pymongo import MongoClient
 import json
 from model import predict
 app = Flask(__name__)
+import sys
 
 @app.route("/create-order")
 def create_order():
@@ -13,7 +14,6 @@ def create_order():
     end_date = datetime.strptime(request.args['end_date'], '%Y %m %d')
 
     item_totals = {}
-    ingredient_totals = {}
     while current_day <= end_date:
         weather_condition = 'Sun'
         weather_temperature = 70
@@ -22,7 +22,6 @@ def create_order():
 
         day_total_sales = predict.get_quantity(day_of_week, week_number, weather_temperature, weather_condition)
         # get ingredient totals for the day
-        day_total_ingredients = {}
 
         for key, value in day_total_sales.items():
             if key in item_totals:
@@ -30,13 +29,20 @@ def create_order():
             else:
                 item_totals[key] = value
 
-        for key, value in day_total_ingredients.items():
-            if key in ingredient_totals:
-                ingredient_totals[key] = value
-            else:
-                ingredient_totals[key] += value
-
         current_day += timedelta(1)
+
+    ingredient_totals = {}
+    client = MongoClient(
+        "mongodb+srv://Xchange_admin:R2f3qzOyEkyWZjWd@xchangealpha-qyyva.mongodb.net/test?retryWrites=true")
+
+    ingredients = client["Ingredients"]["List"].find_one()
+    for item_name in item_totals.keys():
+        ingredients_for_item = ingredients[item_name]
+        for ingredient, quantity in ingredients_for_item.items():
+            if ingredient in ingredient_totals:
+                ingredient_totals[ingredient] += quantity
+            else:
+                ingredient_totals[ingredient] = quantity
 
     data = {
         'sales': item_totals,
