@@ -40,9 +40,9 @@ def create_order():
         ingredients_for_item = ingredients[item_name]
         for ingredient, quantity in ingredients_for_item.items():
             if ingredient in ingredient_totals:
-                ingredient_totals[ingredient] += quantity
+                ingredient_totals[ingredient] += (quantity * item_totals[item_name])
             else:
-                ingredient_totals[ingredient] = quantity
+                ingredient_totals[ingredient] = (quantity * item_totals[item_name])
 
     data = {
         'sales': item_totals,
